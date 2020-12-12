@@ -5,21 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
     <title>Home Page</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
     <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <p>
-        This is the home page of my application
-    </p>
-    <a href="logs/">list of elements</a>
-    <br>
-    Lattitude: <span id ="lat"></span>
-    Longitude: <span id ="lon"></span>
-    <br>
-    Any random data: <input type="text" id = "inputdat"/>
-    <br>
+    <header>
+        <h1>Data Selfie App</h1>
+    </header>
+    <div class="form-signin" id="form">
+      <h1 class="h3 mb-3 font-weight-normal">
+        Welcome.
+        
+      </h1>
+      <div class="h5 mb-3 font-weight-normal">
+        You can create and store timestamps here associated with events.
+      </div>
+      <a href="logs/" tooltip><img src="./images/list_alt-black-48dp.svg" alt="list-of-elements" title="list of elements"></a>
+      
+      <br>
+      
+      <br>
+      <span class="">Event:</span> <input type="text" id = "inputdat" class="form-control bottom"/>
+      <br>
+  
+        <button id = "btn" class="btn btn-lg btn-primary btn-block">Create Timestamp</button>
+    </div>
+    <div id="div1" class="font-weight-normal text-center">
 
-    <button id = "btn">Get Current Location</button>
+    </div>
     <script src="script.js">
         
         </script>
