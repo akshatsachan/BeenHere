@@ -1,21 +1,47 @@
 async function getData() {
     const response = await fetch('/api');
     const data = await response.json();
-
-        for(var property in data)
+    let count = 1;
+        for(var node in data)
         {
-            const element = document.createElement('div');
-            const elemental1 = document.createTextNode(JSON.stringify(data[property].name));
-            const elemental2 = document.createTextNode(JSON.stringify(data[property].lattitude));
-            const elemental3 = document.createTextNode(JSON.stringify(data[property].longitude));
-            const imgelement = document.createElement('img');
-            imgelement.src = data[property].image;
-            element.appendChild(elemental1);
-            element.appendChild(elemental2);
-            element.appendChild(elemental3);
-            element.appendChild(imgelement);
-            document.getElementById('div1').appendChild(element);
-            console.log(data[property]);
+            const table = document.getElementById("table-body");
+
+            const row = document.createElement('tr');
+            
+            const first = document.createElement('th');
+            first.setAttribute("scope","row");
+            first.textContent = count;
+
+            const name = document.createElement('td');
+            name.textContent = (JSON.stringify(data[node].name));
+
+            const timestamp = document.createElement('td');
+            timestamp.textContent = (JSON.stringify(data[node].timestamp));
+
+            const lattitude = document.createElement('td');
+            lattitude.textContent = (JSON.stringify(data[node].lattitude));
+
+            const longitude = document.createElement('td');
+            longitude.textContent = (JSON.stringify(data[node].longitude));
+
+            const imgelement = document.createElement('td');
+
+            const image = document.createElement('img');
+            image.src = data[node].image;
+
+            imgelement.appendChild(image);
+
+            row.appendChild(first);
+            row.appendChild(name);
+            row.appendChild(timestamp);
+            row.appendChild(lattitude);
+            row.appendChild(longitude);
+            row.appendChild(imgelement);
+
+            table.appendChild(row);
+
+            console.log(data[node]);
+            ++count;
         }
     
     
