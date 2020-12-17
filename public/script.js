@@ -1,6 +1,8 @@
+var count = 0;
+
 function setup(){
-    
-    
+    console.log(count);
+    ++count;
     noCanvas();
     const video = createCapture(VIDEO);
     video.size(320,240);
@@ -12,7 +14,7 @@ function setup(){
         const lat = await  position.coords.latitude;
         const lon = await position.coords.longitude;
         document.getElementById('btn').addEventListener('click',async ()=>{
-
+            ++count;
             const ans = document.createElement("div");
             
             ans.setAttribute("class","alert alert-success");
@@ -28,11 +30,11 @@ function setup(){
             
 
             const one = document.createElement("span");
-            one.setAttribute("id","lat");
+            one.setAttribute("id","lat"+count);
             first.appendChild(one);
 
             const two = document.createElement("span");
-            two.setAttribute("id","lon");
+            two.setAttribute("id","lon"+count);
             second.appendChild(two);
 
             ans.appendChild(first);
@@ -44,8 +46,8 @@ function setup(){
             const image64 = video.canvas.toDataURL();
             //console.log(image64);
             const name = document.getElementById("inputdat").value;
-            document.getElementById("lat").textContent = lat;
-            document.getElementById("lon").textContent = lon;
+            document.getElementById("lat"+count).textContent = lat;
+            document.getElementById("lon"+count).textContent = lon;
             const data = {lat ,lon, name, image64};
             const options = {
                 method: "POST",
