@@ -34,7 +34,13 @@ async function getData() {
             const button_element = document.createElement('td');
 
             const button = document.createElement('button');
-            button.textContent = "delete";
+
+            const button_logo = document.createElement("img");
+            button_logo.src = "../images/delete-black-36dp.svg";
+            button_logo.setAttribute("style","color: red");
+            button.appendChild(button_logo);
+
+            button.setAttribute("class","btn btn-outline-danger");
 
             //Adding event listener to button element
             button.addEventListener('click',async ()=>{
