@@ -13,10 +13,11 @@ async function getData() {
             first.textContent = count;
 
             const name = document.createElement('td');
-            name.textContent = (JSON.stringify(data[node].name));
+            name.textContent = (data[node].name);
 
             const timestamp = document.createElement('td');
-            timestamp.textContent = (JSON.stringify(data[node].timestamp));
+            const d = new Date(data[node].timestamp);
+            timestamp.textContent = d.toLocaleDateString() + "\n" +d.toLocaleTimeString();
 
             const lattitude = document.createElement('td');
             lattitude.textContent = (JSON.stringify(data[node].lattitude));
