@@ -10,12 +10,14 @@ const app = express();
 app.listen(3000,()=>{console.log("server is running at port 3000");});
 app.use(express.static('public'));
 app.use(express.json({'limit':'1mb'}));
+
 //-------------nedb code----------------------
 //const database = new Datastore('database.db');
 //database.loadDatabase();
 //database.insert({name: 'something',grade:'1'});
 //database.insert({name: 'somethiny',grade:'2'});
 //-----------------------------------------------
+
 mongodb.MongoClient.connect(uri,(err,client)=>{
     if(err) throw err;
 
@@ -23,6 +25,8 @@ mongodb.MongoClient.connect(uri,(err,client)=>{
     const database = db.collection("selfidata");
 
     //Adding routes
+
+    //Route for reading of elements
     app.get('/api',(request,response)=>{
         const current_ip = request.headers['x-forwarded-for'] || 
         request.connection.remoteAddress || 
@@ -48,6 +52,8 @@ mongodb.MongoClient.connect(uri,(err,client)=>{
         */
         //----------------------------------------------
     });
+
+    //Route for insertion of elements
     app.post('/api'   // Address where we wish to recieve the post request and which can be used to access the request using fetch in index.html's JS
     , (request,response)=>{     //Callback
             //console.log(request.body);
@@ -78,5 +84,27 @@ mongodb.MongoClient.connect(uri,(err,client)=>{
 
             //console.log(locations);
     });
+
+    //Route for deletion of elements
+    app.delete('/api', async (request,response)=>{
+        const element_id = request.body.element_id;
+
+        await database.deleteOne({_id: mongodb.ObjectID(JSON.parse(element_id))})
+        .then(result => {
+            response.json("deleted element with id"+ element_id);
+        })
+        .catch(error => console.error(error));
+
+//debugging code----------------------------------
+        /*
+        await database.find({}).toArray((err,docs)=>{
+            for(node in docs)
+            console.log(JSON.stringify(docs[node].name));
+        });
+        */
+//----------------------------------------------------
+    });
+
+
     //client.close();
 });
