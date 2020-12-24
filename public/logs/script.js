@@ -42,10 +42,11 @@ async function getData() {
             button.appendChild(button_logo);
 
             button.setAttribute("class","btn btn-outline-danger");
+            button.setAttribute("id",JSON.stringify(data[node]._id));
 
             //Adding event listener to button element
             button.addEventListener('click',async ()=>{
-                const element_id = await JSON.stringify(data[node]._id);
+                const element_id = button.getAttribute("id");
                 const options = {
                     method: "delete",
                     headers: {'Content-Type':'application/json'},
