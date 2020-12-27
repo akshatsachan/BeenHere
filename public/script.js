@@ -5,8 +5,28 @@ function setup(){
     ++count;
     noCanvas();
     const video = createCapture(VIDEO);
-    video.size(320,240);
-    video.position(100,125);
+    let viewPortHeight = window.innerHeight;
+    let viewPortWidth = window.innerWidth;
+    
+    console.log(viewPortHeight + " " + viewPortWidth);
+    
+    if(viewPortHeight<=viewPortWidth)
+    {
+        video.size(320,240);
+        video.position(100,125);
+    }
+    
+    window.addEventListener('resize',()=>{
+        viewPortHeight = window.innerHeight;
+        viewPortWidth = window.innerWidth;
+        console.log("resizing");
+        console.log(viewPortHeight + " " + viewPortWidth);
+
+        video.size(viewPortWidth/4,240);
+        video.position((viewPortWidth*3)/4,viewPortHeight/5);
+
+        
+    });
     
     if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition( async (position) => {
