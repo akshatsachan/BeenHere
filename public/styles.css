@@ -64,9 +64,12 @@ footer {
     height: 2.5rem;
 }
 
+
 footer p {
-    color: #ccc;
+  color: #AFAFAF;
+  font-size: 15px;
 }
+
 #btn {
     margin-left: 115px;
     max-width: 250px;
