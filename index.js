@@ -3,6 +3,7 @@ const express = require("express");
 //const Datastore = require('nedb');
 //---------------------------------
 const mongodb = require("mongodb");
+const cors = require("cors");
 
 const uri = "mongodb://localhost:27017";
 
@@ -10,7 +11,9 @@ const app = express();
 app.listen(3000,()=>{console.log("server is running at port 3000");});
 app.use(express.static('public'));
 app.use(express.json({'limit':'1mb'}));
-
+app.use(cors({
+    origin: "http://127.0.0.1:5500"
+}));
 //-------------nedb code----------------------
 //const database = new Datastore('database.db');
 //database.loadDatabase();
