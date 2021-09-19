@@ -1,4 +1,4 @@
-<h1 align="center">Data-Selfie-App</h1>
+<h1 align="center">BeenHere</h1>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5e0956fa-7cc7-46e1-8721-6563d57d969d/deploy-status)](https://app.netlify.com/sites/data-selfie-app/deploys)
 
